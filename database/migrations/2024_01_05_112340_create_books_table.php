@@ -16,11 +16,11 @@ return new class extends Migration
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->string('title');
             $table->integer('pages');
-            $table->string('description');
+            $table->text('description')->nullable();
             $table->string('ISBN', 13)->unique();
             $table->boolean('hard_cover')->default(true);
         });
-        
+
     }
 
     /**
