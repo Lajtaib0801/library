@@ -32,7 +32,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        // $category = Category::with('books')->where('id',$category->id)->get();
+        // $category = Category::with('books')->where('id', $category->id)->get();
         // return response()->json($category);
         return new CategoryResource($category);
     }
@@ -52,10 +52,11 @@ class CategoryController extends Controller
     {
         //
     }
+
     public function booksOfCategory(Category $category)
     {
         $books = $category->books;
-        // return response()->json($books);
+        //return response()->json($books);
         return BookResource::collection($books);
     }
 }

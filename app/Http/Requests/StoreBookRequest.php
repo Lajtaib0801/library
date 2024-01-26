@@ -22,12 +22,12 @@ class StoreBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' =>[$this->isPost(),'string','max:255'],
-            'ISBN' => [$this->isPost(),'string','max:255'],
-            'pages' => [$this->isPost(), 'integer'],
-            'description' =>'string',
+            'title' => [$this->isPost(), 'string', 'max:255'],
+            'ISBN' => [$this->isPost(), 'string', 'size:13', 'unique:books'],
+            'pages' => [$this->isPost(), 'integer','min:1'],
+            'description' => 'string',
             'hard_cover' => 'boolean',
-            'category_id' => [$this->isPost(),'integer','exists:categories','id'],
+            'category_id' => [$this->isPost(), 'integer', 'exists:categories,id'],
         ];
     }
 

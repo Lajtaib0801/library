@@ -10,8 +10,13 @@ class Category extends Model
 {
     use HasFactory;
 
+    // protected $table = 'categories';
+    // protected $primaryKey = 'id';
+
     public $timestamps = false;
+
     // protected $with = ['books'];
+
     /**
      * Get all of the books for the Category
      *

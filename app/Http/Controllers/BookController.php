@@ -26,7 +26,15 @@ class BookController extends Controller
     public function store(StoreBookRequest $request)
     {
         $request->validated();
+
+        // $book = new Book();
+        // $book->title = $request->title;
+        // $book->ISBN = $request->ISBN;
+        // ...
+        // $book->save();
+
         $book = Book::create($request->only(['title', 'ISBN', 'pages', 'description', 'hard_cover', 'category_id']));
+
         return new BookResource($book);
     }
 
@@ -35,7 +43,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        // Book::with('category')->where('id',$book->id)->first();
+        // $book = Book::with('category')->where('id', $book->id)->first();
         // return response()->json($book);
         return new BookResource($book);
     }
@@ -46,7 +54,9 @@ class BookController extends Controller
     public function update(StoreBookRequest $request, Book $book)
     {
         $request->validated();
+
         $book->update($request->only(['title', 'ISBN', 'pages', 'description', 'hard_cover', 'category_id']));
+
         return new BookResource($book);
 
     }

@@ -11,7 +11,10 @@ class Book extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['title', 'ISBN', 'pages', 'description', 'hard_cover', 'category_id'];
+
+    // protected $fillable = ['title', 'ISBN', 'pages', 'description', 'hard_cover', 'category_id'];
+    protected $guided = ['id']; //fillable inverze, az id kivételével mindent enged
+
     /**
      * Get the category that owns the Book
      *
