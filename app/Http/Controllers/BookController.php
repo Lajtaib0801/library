@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Resources\BookResource;
+use App\Http\Resources\ReaderResource;
 use App\Models\Book;
 use Illuminate\Http\Request;
 
@@ -68,5 +69,13 @@ class BookController extends Controller
     {
         $book->delete();
         return response()->json(null, 204);
+    }
+
+    function readersOfBooks(Book $book) {
+        $readers = $book->readers;
+        if ($readers->isEmpty()) {
+            return response()->json(status: 404);
+        }
+        return ReaderResource::collection($readers);
     }
 }
